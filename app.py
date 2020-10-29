@@ -10,6 +10,10 @@ import urllib
 import asyncio
 import aiohttp
 
+# needed to load learner 
+@np_func
+def f1(inp,targ): return f1_score(targ, np.argmax(inp, axis=-1), average='weighted')
+
 def main():
     st.title('Arabic Sentiment Analysis') # title
     st.subheader("Abed Khooli - @akhooli")
@@ -52,8 +56,8 @@ def main():
     
     
     # needed to load learner 
-    @np_func
-    def f1(inp,targ): return f1_score(targ, np.argmax(inp, axis=-1), average='weighted')
+    #@np_func
+    #def f1(inp,targ): return f1_score(targ, np.argmax(inp, axis=-1), average='weighted')
     
     download_file(export_file_url, path/export_file_name)
     #learn = load_learner(path, export_file_name)
