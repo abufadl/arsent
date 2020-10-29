@@ -73,10 +73,7 @@ def main():
 
     #learn = setup_learner()
 
-    loop  =  asyncio.get_event_loop()
-    #tasks  = [ asyncio.ensure_future (setup_learner())]
-    #learn  =  loop.run_until_complete (asyncio.gather (*tasks))[0]
-    #loop.close ()
+
 
   # Once we have the dependencies, add a selector for the app mode on the sidebar.
     st.sidebar.title("Main Menu")
@@ -92,7 +89,11 @@ def main():
         run_the_app()
     # run the app 
     #run_the_app()
-  
+    
+loop  =  asyncio.get_event_loop()
+tasks  = [ asyncio.ensure_future (setup_learner())]
+learn  =  loop.run_until_complete (asyncio.gather (*tasks))[0]
+loop.close ()  
   
 def run_the_app():
     st.text("app ran successfully.")
