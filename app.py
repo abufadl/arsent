@@ -34,12 +34,12 @@ def main():
 
     #
     async  def  download_file ( url , dest ):
-        if  dest . exists (): return
+        if  dest.exists (): return
         async  with  aiohttp . ClientSession () as  session :
-            async  with  session . get ( url ) as  response :
-                data  =  await  response . read ()
+            async  with  session.get ( url ) as  response :
+                data  =  await  response.read ()
                 with  open ( dest , 'wb' ) as  f :
-                    f . write ( data )
+                    f.write ( data )
 
 
     accents = re.compile(r'[\u064b-\u0652\u0640]') # harakaat and tatweel (kashida) to remove  
@@ -73,10 +73,10 @@ def main():
 
     #learn = setup_learner()
 
-    loop  =  asyncio.get_event_loop()
-    tasks  = [ asyncio.ensure_future (setup_learner())]
-    learn  =  loop.run_until_complete (asyncio.gather (*tasks))[0]
-    loop.close ()
+    #loop  =  asyncio.get_event_loop()
+    #tasks  = [ asyncio.ensure_future (setup_learner())]
+    #learn  =  loop.run_until_complete (asyncio.gather (*tasks))[0]
+    #loop.close ()
 
   # Once we have the dependencies, add a selector for the app mode on the sidebar.
     st.sidebar.title("Main Menu")
