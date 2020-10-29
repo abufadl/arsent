@@ -60,7 +60,7 @@ def main():
         print({"prediction": str(pred_class), "scores": sorted(zip(learn.data.classes, map(float, losses)), key=lambda p: p[1], reverse=True)})
         return JSONResponse({"prediction": str(pred_class), "scores": sorted(zip(learn.data.classes, map(float, losses)), key=lambda p: p[1], reverse=True), "key": "1 = positive, -1 = negative"})
 
-    st.write(f'we think the path is: { path}') 
+    st.write(f'we think the path is: { path} while data path is {data_path}') 
     #learn = load_learner(path, export_file_name)
     # needed to load learner 
     @np_func
