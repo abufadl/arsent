@@ -15,8 +15,20 @@ def main():
   readme_text = st.markdown(get_file_content_as_string("README.md"))
   with st.spinner('Loading something ...'):
     time.sleep(2)
-    
-  slot1 = st.empty()
+ 
+
+    # Once we have the dependencies, add a selector for the app mode on the sidebar.
+    st.sidebar.title("Main Menu")
+    app_mode = st.sidebar.selectbox("Select an option",
+        ["Show background info", "Run the app", "Show the source code"])
+    if app_mode == "Show background info":
+        st.sidebar.success('To continue select "Run the app".')
+    elif app_mode == "Show the source code":
+        readme_text.empty()
+        st.code(get_file_content_as_string("app.py"))
+    elif app_mode == "Run the app":
+        readme_text.empty()
+        run_the_app()
   # run the app 
   run_the_app()
   
