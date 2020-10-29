@@ -110,7 +110,7 @@ def run_the_app():
 		return ' '.join(arabic_punc.findall(accents.sub('',x)))
 
 	download_file(export_file_url, path/export_file_name)
-	#learn = load_learner(path, export_file_name)
+	learn = load_learner(path, export_file_name)
 	
 	
 	text_data = st.text_input('review', 'the hotel was so great and nice. Will always go there.', max_chars=250)
