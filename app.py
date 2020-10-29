@@ -26,10 +26,10 @@ def run_the_app():
   return 'success'
 
 
-# Download a single file and make its content available as a string.
+# Download a single file and make its content available as a string. https://raw.githubusercontent.com/abufadl/asa/master/
 @st.cache(show_spinner=False)
 def get_file_content_as_string(path):
-  url = 'https://raw.githubusercontent.com/abufadl/asa/' + path
+  url = 'https://raw.githubusercontent.com/abufadl/asa/master/' + path
   response = urllib.request.urlopen(url)
   return response.read().decode("utf-8")
 
