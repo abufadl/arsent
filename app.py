@@ -63,16 +63,11 @@ def main():
     learn = load_learner(path, export_file_name)
     
     #debug
-    st.write(f'we think the path is: { path} while data path is {data_path} and path_t is {path_t}') 
-    st.write(f'path_t contents: {path_t.ls()}')
-    st.write(f'path contents: {path.ls()}')    
+    #st.write(f'we think the path is: { path} while data path is {data_path} and path_t is {path_t}') 
+    #st.write(f'path_t contents: {path_t.ls()}')
+    #st.write(f'path contents: {path.ls()}')    
 
     
-
-
-    #learn = setup_learner()
-
-
 
   # Once we have the dependencies, add a selector for the app mode on the sidebar.
     st.sidebar.title("Main Menu")
@@ -121,8 +116,11 @@ def download_file(url , dest):
             
   
 def run_the_app():
-    st.text("app ran successfully.")
-    return 'success'
+	text_data = st.text_input('review', 'the hotel was so great and nice. Will always go there.', max_chars=250)
+	prediction = learn.predict(clean_text(text_data.strip()))
+	st.text("app ran successfully.")
+	st.write(prediction)
+	return 'success'
 
 
 # Download a single file and make its content available as a string. https://raw.githubusercontent.com/abufadl/asa/master/
