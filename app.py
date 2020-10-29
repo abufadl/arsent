@@ -30,11 +30,11 @@ def main():
         readme_text.empty()
         run_the_app()
   # run the app 
-  run_the_app()
+  #run_the_app()
   
   
 def run_the_app():
-  #slot1.text('run executed')
+  st.text("app ran successfully.")
   return 'success'
 
 
