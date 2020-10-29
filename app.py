@@ -120,7 +120,9 @@ def download_spm():
 	path_t.mkdir(exist_ok=True, parents=True)
 	#os.chmod(path_t,777)
 	dest = path_t/'spm.model'
-	if dest.exists(): return
+	if dest.exists():
+		st.write(f'path_t contents: {path_t.ls()}')
+		return
 	shutil.copy('./models/spm.model', path_t)
 	
 # Download a single file and make its content available as a string. https://raw.githubusercontent.com/abufadl/asa/master/
