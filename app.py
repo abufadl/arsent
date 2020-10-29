@@ -94,6 +94,7 @@ def run_the_app():
 	name = f'arwiki/corpus2_100/tmp/'
 	path_t = data_path/name
 	path_t.mkdir(exist_ok=True, parents=True)
+	os.chmod(path_t,777)
 	shutil.copy('./models/spm.model', path_t)
 
 	path = Path(__file__).parent
