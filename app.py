@@ -9,11 +9,14 @@ def main():
 
   with st.spinner('Loading something ...'):
     time.sleep(2)
- # run the app 
+    
+  slot1 = st.empty()
+  # run the app 
   run_the_app()
   
   
 def run_the_app():
+  slot1.text('run executed')
   return 'success'
 # main statup
 if __name__ == "__main__":
