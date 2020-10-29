@@ -61,7 +61,7 @@ def main():
         return JSONResponse({"prediction": str(pred_class), "scores": sorted(zip(learn.data.classes, map(float, losses)), key=lambda p: p[1], reverse=True), "key": "1 = positive, -1 = negative"})
 
     #download_file(export_file_url, path/export_file_name)
-    learn = load_learner(path, export_file_name)
+    #learn = load_learner(path, export_file_name)
     
     #debug
     st.write(f'we think the path is: { path} while data path is {data_path} and path_t is {path_t}') 
