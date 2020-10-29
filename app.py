@@ -7,6 +7,7 @@ import os
 import shutil
 import re
 import urllib
+import asyncio
 
 
 def main():
@@ -16,8 +17,18 @@ def main():
     readme_text = st.markdown(get_file_content_as_string("README.md"))
     #with st.spinner('Loading something ...'):
     #       time.sleep(2)
- 
+    #!mkdir -p /root/.fastai/data/arwiki/corpus2_100/tmp/
+    data_path = Config.data_path()
+    name = f'arwiki/corpus2_100/tmp/'
+    path_t = data_path/name
+    path_t.mkdir(exist_ok=True, parents=True)
+    shutil.copy('./app/models/spm.model', path_t)
 
+    path = Path(__file__).parent
+
+    export_file_url = 'https://www.googleapis.com/drive/v3/files/11IWumpzKAtw3axw_mBaiwZ-abLL9QZBV?alt=media&key=AIzaSyArnAhtI95SoFCexh97Xyi0JHI03ghd-_0'
+    export_file_name = 'ar_classifier_reviews_sp15_multifit_nows_2fp_exp.pkl'
+    
   # Once we have the dependencies, add a selector for the app mode on the sidebar.
     st.sidebar.title("Main Menu")
     app_mode = st.sidebar.selectbox("Select an option",
