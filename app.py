@@ -34,11 +34,11 @@ def main():
     defaults.device = torch.device('cpu')
 
     #
-    async def download_file(url , dest):
+    def download_file(url , dest):
         if  dest.exists(): return
-        async with aiohttp.ClientSession() as session:
-            async  with  session.get (url) as response:
-                data  =  await  response.read ()
+        with aiohttp.ClientSession() as session:
+            with  session.get (url) as response:
+                data  =  response.read ()
                 with open (dest , 'wb') as  f:
                     f.write (data)
 
