@@ -33,37 +33,6 @@ def main():
     classes = ['Mixed', 'Negative', 'Positive']
     defaults.device = torch.device('cpu')
 
-    #
-    def download_file(url , dest):
-        if  dest.exists(): return
-        file_warning, progress_bar = None, None
-        try:
-            file_warning = st.warning(f"Downloading {url}")
-            progress_bar = st.progress(0)
-            with open(dest, "wb") as output_file:
-                with urllib.request.urlopen(url) as response:
-                    length = int(response.info()["Content-Length"])
-                    counter = 0.0
-                    MEGABYTES = 2.0 ** 20.0
-                    while True:
-                        data = response.read(8192)
-                        if not data:
-                            break
-                        counter += len(data)
-                        output_file.write(data)
-
-                        # We perform animation by overwriting the elements.
-                        file_warning.warning(f"Downloading ... {counter}/{length} MB")
-                        progress_bar.progress(min(counter / length, 1.0))
-
-        # Finally, we remove these visual elements by calling .empty().
-        finally:
-            if file_warning is not None:
-                file_warning.empty()
-            if progress_bar is not None:
-                progress_bar.empty()
-            
-
     accents = re.compile(r'[\u064b-\u0652\u0640]') # harakaat and tatweel (kashida) to remove  
     arabic_punc = re.compile(r'[\u0621-\u063A\u0641-\u064A\u061b\u061f\u060c\u003A\u003D\u002E\u002F\u007C]+') # to keep 
     def clean_text(x):
@@ -116,7 +85,36 @@ def main():
     # run the app 
     #run_the_app()
     
- 
+# download the pickle file 
+def download_file(url , dest):
+	if  dest.exists(): return
+	file_warning, progress_bar = None, None
+	try:
+		file_warning = st.warning(f"Downloading {url}")
+		progress_bar = st.progress(0)
+		with open(dest, "wb") as output_file:
+			with urllib.request.urlopen(url) as response:
+				length = int(response.info()["Content-Length"])
+				counter = 0.0
+				MEGABYTES = 2.0 ** 20.0
+				while True:
+					data = response.read(8192)
+					if not data:
+						break
+					counter += len(data)
+					output_file.write(data)
+
+					# We perform animation by overwriting the elements.
+					file_warning.warning(f"Downloading ... {counter}/{length} MB")
+					progress_bar.progress(min(counter / length, 1.0))
+
+	# Finally, we remove these visual elements by calling .empty().
+	finally:
+		if file_warning is not None:
+			file_warning.empty()
+		if progress_bar is not None:
+			progress_bar.empty()
+            
   
 def run_the_app():
     st.text("app ran successfully.")
