@@ -9,7 +9,12 @@ def main():
 
   with st.spinner('Loading something ...'):
     time.sleep(2)
+ # run the app 
+  run_the_app()
   
+  
+def run_the_app():
+  return 'success'
 # main statup
 if __name__ == "__main__":
     main()
