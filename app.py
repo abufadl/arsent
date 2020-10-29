@@ -2,6 +2,11 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import time
+import os
+import shutil
+import re
+import urllib
+
 
 def main():
   st.title('Arabic Sentiment Analysis') # title
