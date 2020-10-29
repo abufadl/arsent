@@ -122,6 +122,8 @@ def download_spm():
 	dest = path_t/'spm.model'
 	if dest.exists():
 		st.write(f'path_t contents: {path_t.ls()}')
+		file_size = os.path.getsize(dest)
+		st.write(f'Size of spm.model is {file_size}')
 		return
 	shutil.copy('./models/spm.model', path_t)
 	
