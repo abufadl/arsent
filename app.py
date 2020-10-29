@@ -7,8 +7,8 @@ import os
 import shutil
 import re
 import urllib
-import asyncio
-
+#import asyncio
+import aiohttp
 
 def main():
     st.title('Arabic Sentiment Analysis') # title
