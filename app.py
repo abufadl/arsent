@@ -32,7 +32,7 @@ def main():
     classes = ['Mixed', 'Negative', 'Positive']
     defaults.device = torch.device('cpu')
 
-        #
+    #
     async  def  download_file ( url , dest ):
         if  dest . exists (): return
         async  with  aiohttp . ClientSession () as  session :
@@ -67,6 +67,16 @@ def main():
             return learn
         except RuntimeError as e:
             raise
+    # needed to load learner 
+    @np_func
+    def f1(inp,targ): return f1_score(targ, np.argmax(inp, axis=-1), average='weighted')
+
+    #learn = setup_learner()
+
+    loop  =  asyncio.get_event_loop()
+    tasks  = [ asyncio.ensure_future (setup_learner())]
+    learn  =  loop.run_until_complete (asyncio.gather (*tasks))[0]
+    loop.close ()
 
   # Once we have the dependencies, add a selector for the app mode on the sidebar.
     st.sidebar.title("Main Menu")
