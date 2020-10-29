@@ -39,8 +39,8 @@ def main():
         async with aiohttp.ClientSession() as session:
             async  with  session.get (url) as response:
                 data  =  await  response.read ()
-                with  open (dest , 'wb') as  f:
-                    f.write ( data )
+                with open (dest , 'wb') as  f:
+                    f.write (data)
 
 
     accents = re.compile(r'[\u064b-\u0652\u0640]') # harakaat and tatweel (kashida) to remove  
@@ -61,6 +61,7 @@ def main():
         return JSONResponse({"prediction": str(pred_class), "scores": sorted(zip(learn.data.classes, map(float, losses)), key=lambda p: p[1], reverse=True), "key": "1 = positive, -1 = negative"})
 
     st.write(f'we think the path is: { path} while data path is {data_path} and path_t is {path_t}') 
+    st.write(f'path_t contents: {path_t.ls()}')
     #learn = load_learner(path, export_file_name)
     # needed to load learner 
     @np_func
