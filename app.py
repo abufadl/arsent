@@ -17,6 +17,7 @@ def main():
     readme_text = st.markdown(get_file_content_as_string("README.md"))
     #with st.spinner('Loading something ...'):
     #       time.sleep(2)
+    
     #!mkdir -p /root/.fastai/data/arwiki/corpus2_100/tmp/
     data_path = Config.data_path()
     name = f'arwiki/corpus2_100/tmp/'
@@ -33,12 +34,12 @@ def main():
     defaults.device = torch.device('cpu')
 
     #
-    async  def  download_file ( url , dest ):
-        if  dest.exists (): return
-        async  with  aiohttp . ClientSession () as  session :
-            async  with  session.get ( url ) as  response :
+    async def download_file(url , dest):
+        if  dest.exists(): return
+        async with aiohttp.ClientSession() as session:
+            async  with  session.get (url) as response:
                 data  =  await  response.read ()
-                with  open ( dest , 'wb' ) as  f :
+                with  open (dest , 'wb') as  f:
                     f.write ( data )
 
 
@@ -59,8 +60,8 @@ def main():
         print({"prediction": str(pred_class), "scores": sorted(zip(learn.data.classes, map(float, losses)), key=lambda p: p[1], reverse=True)})
         return JSONResponse({"prediction": str(pred_class), "scores": sorted(zip(learn.data.classes, map(float, losses)), key=lambda p: p[1], reverse=True), "key": "1 = positive, -1 = negative"})
 
-
-    learn = load_learner(path, export_file_name)
+    st.write(f'we think the path is: { path}') 
+    #learn = load_learner(path, export_file_name)
     # needed to load learner 
     @np_func
     def f1(inp,targ): return f1_score(targ, np.argmax(inp, axis=-1), average='weighted')
@@ -93,8 +94,8 @@ def run_the_app():
 
 # Download a single file and make its content available as a string. https://raw.githubusercontent.com/abufadl/asa/master/
 @st.cache(show_spinner=False)
-def get_file_content_as_string(path):
-    url = 'https://raw.githubusercontent.com/abufadl/asa/master/' + path
+def get_file_content_as_string(path2):
+    url = 'https://raw.githubusercontent.com/abufadl/asa/master/' + path2
     response = urllib.request.urlopen(url)
     return response.read().decode("utf-8")
 
