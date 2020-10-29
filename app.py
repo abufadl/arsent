@@ -60,13 +60,7 @@ def main():
         return JSONResponse({"prediction": str(pred_class), "scores": sorted(zip(learn.data.classes, map(float, losses)), key=lambda p: p[1], reverse=True), "key": "1 = positive, -1 = negative"})
 
 
-    async def setup_learner():
-        await download_file(export_file_url, path/export_file_name)
-        try:
-            learn = load_learner(path, export_file_name)
-            return learn
-        except RuntimeError as e:
-            raise
+    learn = load_learner(path, export_file_name)
     # needed to load learner 
     @np_func
     def f1(inp,targ): return f1_score(targ, np.argmax(inp, axis=-1), average='weighted')
@@ -90,10 +84,7 @@ def main():
     # run the app 
     #run_the_app()
     
-loop  =  asyncio.get_event_loop()
-tasks  = [ asyncio.ensure_future (setup_learner())]
-learn  =  loop.run_until_complete (asyncio.gather (*tasks))[0]
-loop.close ()  
+ 
   
 def run_the_app():
     st.text("app ran successfully.")
