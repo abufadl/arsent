@@ -60,9 +60,15 @@ def main():
         print({"prediction": str(pred_class), "scores": sorted(zip(learn.data.classes, map(float, losses)), key=lambda p: p[1], reverse=True)})
         return JSONResponse({"prediction": str(pred_class), "scores": sorted(zip(learn.data.classes, map(float, losses)), key=lambda p: p[1], reverse=True), "key": "1 = positive, -1 = negative"})
 
+    download_file(export_file_url, path/export_file_name)
+    learn = load_learner(path, export_file_name)
+    
+    #debug
     st.write(f'we think the path is: { path} while data path is {data_path} and path_t is {path_t}') 
     st.write(f'path_t contents: {path_t.ls()}')
-    #learn = load_learner(path, export_file_name)
+    st.write(f'path contents: {path.ls()}')    
+
+    
     # needed to load learner 
     @np_func
     def f1(inp,targ): return f1_score(targ, np.argmax(inp, axis=-1), average='weighted')
