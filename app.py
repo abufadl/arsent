@@ -89,16 +89,8 @@ def predict_sentiment(txt):
 
 def run_the_app():
 
-	#!mkdir -p /root/.fastai/data/arwiki/corpus2_100/tmp/
-	data_path = Config.data_path()
-	name = f'arwiki/corpus2_100/tmp/'
-	path_t = data_path/name
-	path_t.mkdir(exist_ok=True, parents=True)
-	os.chmod(path_t,777)
-	shutil.copy('./models/spm.model', path_t)
-
 	path = Path(__file__).parent
-
+	download_spm()
 	export_file_url = 'https://www.googleapis.com/drive/v3/files/11IWumpzKAtw3axw_mBaiwZ-abLL9QZBV?alt=media&key=AIzaSyArnAhtI95SoFCexh97Xyi0JHI03ghd-_0'
 	export_file_name = 'ar_classifier_reviews_sp15_multifit_nows_2fp_exp.pkl'
 
@@ -120,7 +112,16 @@ def run_the_app():
 	st.write(prediction)
 	return 'success'
 
-
+def download_spm():
+	#!mkdir -p /root/.fastai/data/arwiki/corpus2_100/tmp/
+	data_path = Config.data_path()
+	name = f'arwiki/corpus2_100/tmp/'
+	path_t = data_path/name
+	path_t.mkdir(exist_ok=True, parents=True)
+	#os.chmod(path_t,777)
+	if exists(path_t/'spm.model'): return
+	shutil.copy('./models/spm.model', path_t)
+	
 # Download a single file and make its content available as a string. https://raw.githubusercontent.com/abufadl/asa/master/
 @st.cache(show_spinner=False)
 def get_file_content_as_string(path2):
