@@ -105,7 +105,7 @@ def run_the_app():
 	
 	text_data = st.text_input('review', 'استمتعت بالإقامة في الفندق الفخم وكان الطعام جيدا.', max_chars=250)
 	sentence = Sentence(clean_text(text_data.strip()))
-	prediction = classifier.predict(sentence)
+	classifier.predict(sentence)
 	st.text("app ran successfully.")
 	st.write(sentence.labels)
 	return 'success'
