@@ -1,4 +1,5 @@
-from fastai.text import *
+from flair.data import Sentence
+from flair.models import TextClassifier
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -9,10 +10,8 @@ import re
 import urllib
 import asyncio
 import aiohttp
+from pathlib import Path
 
-# needed to load learner 
-@np_func
-def f1(inp,targ): return f1_score(targ, np.argmax(inp, axis=-1), average='weighted')
 
 def main():
     st.title('Arabic Sentiment Analysis') # title
@@ -89,43 +88,27 @@ def predict_sentiment(txt):
 
 def run_the_app():
 
-	path = Path(__file__).parent
-	download_spm()
-	export_file_url = 'https://www.googleapis.com/drive/v3/files/11IWumpzKAtw3axw_mBaiwZ-abLL9QZBV?alt=media&key=AIzaSyArnAhtI95SoFCexh97Xyi0JHI03ghd-_0'
-	export_file_name = 'ar_classifier_reviews_sp15_multifit_nows_2fp_exp.pkl'
+	export_file_url = 'https://www.googleapis.com/drive/v3/files/1fsOISLHSk7qp_fZ8_bGwl0uRi2mZujbR?alt=media&key=AIzaSyArnAhtI95SoFCexh97Xyi0JHI03ghd-_0'
+	export_file_name = 'arsent_bmc3.pt'
 
-	classes = ['Mixed', 'Negative', 'Positive']
+	classes = ['Negative', 'Positive']
 	defaults.device = torch.device('cpu')
 
 	accents = re.compile(r'[\u064b-\u0652\u0640]') # harakaat and tatweel (kashida) to remove  
 	arabic_punc = re.compile(r'[\u0621-\u063A\u0641-\u064A\u061b\u061f\u060c\u003A\u003D\u002E\u002F\u007C]+') # to keep 
 	def clean_text(x):
 		return ' '.join(arabic_punc.findall(accents.sub('',x)))
-
+	path = Path('.')
 	download_file(export_file_url, path/export_file_name)
-	learn = load_learner(path, export_file_name)
-	
+	classifier = TextClassifier.load('arsent_bmc3.pt')
 	
 	text_data = st.text_input('review', 'the hotel was so great and nice. Will always go there.', max_chars=250)
-	prediction = learn.predict(clean_text(text_data.strip()))
+	sentence = Sentence(clean_text(text_data.strip()))
+	prediction = classifier.predict(sentence)
 	st.text("app ran successfully.")
 	st.write(prediction)
 	return 'success'
 
-def download_spm():
-	#!mkdir -p /root/.fastai/data/arwiki/corpus2_100/tmp/
-	data_path = Config.data_path()
-	name = f'arwiki/corpus2_100/tmp/'
-	path_t = data_path/name
-	path_t.mkdir(exist_ok=True, parents=True)
-	#os.chmod(path_t,777)
-	dest = path_t/'spm.model'
-	if dest.exists():
-		st.write(f'path_t contents: {path_t.ls()}')
-		file_size = os.path.getsize(dest)
-		st.write(f'Size of spm.model is {file_size}')
-		return
-	shutil.copy('./models/spm.model', path_t)
 	
 # Download a single file and make its content available as a string. https://raw.githubusercontent.com/abufadl/asa/master/
 @st.cache(show_spinner=False)
