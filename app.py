@@ -103,12 +103,11 @@ def run_the_app():
 	download_file(export_file_url, path/export_file_name)
 	classifier = TextClassifier.load('arsent_bmc3.pt')
 	
-	text_data = st.text_input('review', 'استمتعت بالإقامة في الفندق الفخم وكان الطعام جيدا.', max_chars=250)
+	text_data = st.text_input('Review (Press ENTER to apply)', 'استمتعت بالإقامة في الفندق الفخم وكان الطعام جيدا.', max_chars=250)
 	sentence = Sentence(clean_text(text_data.strip()))
 	classifier.predict(sentence)
-	st.text("app ran successfully.")
+	#st.text("app ran successfully.")
 	st.write(sentence.labels[0])
-	return 'success'
 
 	
 # Download a single file and make its content available as a string. https://raw.githubusercontent.com/abufadl/asa/master/
