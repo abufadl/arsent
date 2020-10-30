@@ -103,11 +103,11 @@ def run_the_app():
 	download_file(export_file_url, path/export_file_name)
 	classifier = TextClassifier.load('arsent_bmc3.pt')
 	
-	text_data = st.text_input('review', 'the hotel was so great and nice. Will always go there.', max_chars=250)
+	text_data = st.text_input('review', 'استمتعت بالإقامة في الفندق الفخم وكان الطعام جيدا.', max_chars=250)
 	sentence = Sentence(clean_text(text_data.strip()))
 	prediction = classifier.predict(sentence)
 	st.text("app ran successfully.")
-	st.write(prediction)
+	st.write(sentence.labels)
 	return 'success'
 
 	
