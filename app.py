@@ -16,7 +16,7 @@ import torch
 st.beta_set_page_config( # Alternate names: setup_page, page, layout
 	layout="centered",  # Can be "centered" or "wide". In the future also "dashboard", etc.
 	initial_sidebar_state="expanded",  # Can be "auto", "expanded", "collapsed"
-	page_title=None,  # String or None. Strings get appended with "• Streamlit". 
+	page_title="Arabic Sentiment Analysis",  # String or None. Strings get appended with "• Streamlit". 
 	page_icon=None,  # String, anything supported by st.image, or None.
 	)
 
@@ -70,7 +70,7 @@ def download_file(url , dest):
 					output_file.write(data)
 
 					# We perform animation by overwriting the elements.
-					file_warning.warning(f"Downloading ... {counter}/{length} MB")
+					file_warning.warning(f"Downloading ... {counter/MEGABYTES}/{length/MEGABYTES} MB")
 					progress_bar.progress(min(counter / length, 1.0))
 
 	# Finally, we remove these visual elements by calling .empty().
