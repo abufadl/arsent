@@ -107,7 +107,7 @@ def run_the_app():
 	sentence = Sentence(clean_text(text_data.strip()))
 	classifier.predict(sentence)
 	st.text("app ran successfully.")
-	st.write(sentence.labels)
+	st.write(sentence.labels[0])
 	return 'success'
 
 	
