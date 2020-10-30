@@ -13,7 +13,7 @@ import aiohttp
 from pathlib import Path
 import torch
 
-st.set_page_config( # Alternate names: setup_page, page, layout
+st.beta_set_page_config( # Alternate names: setup_page, page, layout
 	layout="centered",  # Can be "centered" or "wide". In the future also "dashboard", etc.
 	initial_sidebar_state="expanded",  # Can be "auto", "expanded", "collapsed"
 	page_title=None,  # String or None. Strings get appended with "• Streamlit". 
