@@ -93,7 +93,7 @@ def run_the_app():
 	export_file_name = 'arsent_bmc3.pt'
 
 	classes = ['Negative', 'Positive']
-	defaults.device = torch.device('cpu')
+	#defaults.device = torch.device('cpu')
 
 	accents = re.compile(r'[\u064b-\u0652\u0640]') # harakaat and tatweel (kashida) to remove  
 	arabic_punc = re.compile(r'[\u0621-\u063A\u0641-\u064A\u061b\u061f\u060c\u003A\u003D\u002E\u002F\u007C]+') # to keep 
