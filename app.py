@@ -27,8 +27,7 @@ def main():
     readme_text = st.markdown(get_file_content_as_string("README.md"))
     #with st.spinner('Loading something ...'):
     #       time.sleep(2)
-  
-    
+      
     #debug
     #st.write(f'we think the path is: { path} while data path is {data_path} and path_t is {path_t}') 
     #st.write(f'path_t contents: {path_t.ls()}')
