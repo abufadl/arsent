@@ -86,9 +86,6 @@ def run_the_app():
 	export_file_url = 'https://www.googleapis.com/drive/v3/files/1fsOISLHSk7qp_fZ8_bGwl0uRi2mZujbR?alt=media&key=AIzaSyArnAhtI95SoFCexh97Xyi0JHI03ghd-_0'
 	export_file_name = 'arsent_bmc3.pt'
 
-	classes = ['Negative', 'Positive']
-	#defaults.device = torch.device('cpu')
-
 	accents = re.compile(r'[\u064b-\u0652\u0640]') # harakaat and tatweel (kashida) to remove  
 	arabic_punc = re.compile(r'[\u0621-\u063A\u0641-\u064A\u061b\u061f\u060c\u003A\u003D\u002E\u002F\u007C]+') # to keep 
 	  
@@ -106,7 +103,7 @@ def run_the_app():
 	download_file(export_file_url, path/export_file_name)
 	classifier = TextClassifier.load('arsent_bmc3.pt')
 	
-	text_data = st.text_input('Review (Press ENTER to apply)', 'استمتعت بالإقامة في الفندق الفخم وكان الطعام جيدا.', max_chars=250)
+	text_data = st.text_input('Review (Type or paste an Arabic review. Press ENTER to apply)', 'استمتعت بالإقامة في الفندق الفخم وكان الطعام جيدا.', max_chars=250)
 	if (check_entry(text_data)):
 		sentence = Sentence(clean_text(text_data.strip()))
 		classifier.predict(sentence)
