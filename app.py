@@ -80,17 +80,6 @@ def download_file(url , dest):
 		if progress_bar is not None:
 			progress_bar.empty()
             
-  
-def predict_sentiment(txt):
-	if not txt or len(txt.strip()) < 5:
-		return JSONResponse({"prediction": "Invalid Entry", "scores": "None", "key": "1 = positive, -1 = negative"})
-	txt_clean = clean_text(txt)
-	if len(txt_clean.split()) < 2:
-		return JSONResponse({"prediction": "Invalid Entry", "scores": "None", "key": "1 = positive, -1 = negative"})
-	pred_class, pred_idx, losses = learn.predict(txt_clean)
-	print(pred_class)
-	print({"prediction": str(pred_class), "scores": sorted(zip(learn.data.classes, map(float, losses)), key=lambda p: p[1], reverse=True)})
-	return JSONResponse({"prediction": str(pred_class), "scores": sorted(zip(learn.data.classes, map(float, losses)), key=lambda p: p[1], reverse=True), "key": "1 = positive, -1 = negative"})
 
 def run_the_app():
 
@@ -102,6 +91,15 @@ def run_the_app():
 
 	accents = re.compile(r'[\u064b-\u0652\u0640]') # harakaat and tatweel (kashida) to remove  
 	arabic_punc = re.compile(r'[\u0621-\u063A\u0641-\u064A\u061b\u061f\u060c\u003A\u003D\u002E\u002F\u007C]+') # to keep 
+	  
+	def check_entry(txt):
+		if not txt or len(txt.strip()) < 5:
+			return False
+		txt_clean = clean_text(txt)
+		if len(txt_clean.split()) < 2:
+			return False
+		return txt_clean
+
 	def clean_text(x):
 		return ' '.join(arabic_punc.findall(accents.sub('',x)))
 	path = Path('.')
@@ -109,11 +107,13 @@ def run_the_app():
 	classifier = TextClassifier.load('arsent_bmc3.pt')
 	
 	text_data = st.text_input('Review (Press ENTER to apply)', 'استمتعت بالإقامة في الفندق الفخم وكان الطعام جيدا.', max_chars=250)
-	sentence = Sentence(clean_text(text_data.strip()))
-	classifier.predict(sentence)
-	#st.text("app ran successfully.")
-	st.write(sentence.labels[0])
-
+	if (check_entry(text_data)):
+		sentence = Sentence(clean_text(text_data.strip()))
+		classifier.predict(sentence)
+		#st.text("app ran successfully.")
+		st.write(sentence.labels[0])
+	else:
+		st.warning('Invalid entry. Try a few Arabic words at least.')
 	
 # Download a single file and make its content available as a string. https://raw.githubusercontent.com/abufadl/asa/master/
 @st.cache(show_spinner=False)
