@@ -1,6 +1,6 @@
 # About this app 
 # التحليل العاطفي للنصوص العربية 
-يعمل هذا التطبيق على تحليل المشاعر للنصوص العربية وخاصة مراجعات وتقييمات الخدمات كالفنادق والمطاعموالكتب وشركات الطيران، ويعتمد على نموذج لغوي مبني على التعلم العميق.
+يعمل هذا التطبيق على تحليل المشاعر للنصوص العربية وخاصة مراجعات وتقييمات الخدمات كالفنادق والمطاعم والكتب وشركات الطيران، ويعتمد على نموذج لغوي مبني على التعلم العميق.
 
 Arabic Sentiment Analysis - App powered by [Streamlit](https://docs.streamlit.io/)  
 The model behind this app was trained on positive and negative reviews (hotels, restaurants, ...) using the [Flair NLP](https://github.com/flairNLP/flair/) library and by fine-tuning [bert-base-multilingual-cased](https://huggingface.co/bert-base-multilingual-cased) from Huggingface. It was not fully trained (around 0.89 accuracy).    
