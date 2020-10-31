@@ -47,7 +47,7 @@ def main():
 # display image 
 def display_image():
 	image = Image.open('sent_pn.png')
-	st.image(image, caption='sentiment', width=None, use_column_width=True)
+	st.image(image, caption='sentiment', width=None, use_column_width=False)
 
 # download the pt file 
 def download_file(url , dest):
