@@ -120,6 +120,8 @@ def run_the_app():
 				
 		else:
 			st.warning('Invalid entry. Try a few Arabic words at least.')
+	else:
+		st.write("Thank you for trying out thid app!")
 	
 # Download a single file and make its content available as a string. https://raw.githubusercontent.com/abufadl/asa/master/
 @st.cache(show_spinner=False)
