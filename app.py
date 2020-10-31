@@ -22,26 +22,25 @@ st.beta_set_page_config( # Alternate names: setup_page, page, layout
 	)
 
 def main():	
-		st.title('Arabic Sentiment Analysis: Service Reviews') # title
-		st.subheader("By Abed Khooli - Twitter: @akhooli, LinkedIn: /in/akhooli")
-		display_image('sent_pn.png')	
-		# Render the readme as markdown using st.markdown.
-		readme_text = st.markdown(get_file_content_as_string("README.md"))
+	st.title('Arabic Sentiment Analysis: Service Reviews') # title
+	st.subheader("By Abed Khooli - Twitter: @akhooli, LinkedIn: /in/akhooli")
+	display_image('sent_pn.png')	
+	# Render the readme as markdown using st.markdown.
+	readme_text = st.markdown(get_file_content_as_string("README.md"))
 
-
-		# Once we have the dependencies, add a selector for the app mode on the sidebar.
-		st.sidebar.title("Main Menu")
-		app_mode = st.sidebar.selectbox("Select an option",
-			["Show background info", "Run the app", "Show the source code"])
-		if app_mode == "Show background info":
-			st.sidebar.success('To run this app select "Run the app" from the drop down list.')
-		elif app_mode == "Show the source code":
-			readme_text.empty()
-			st.code(get_file_content_as_string("app.py"))
-		elif app_mode == "Run the app":
-			readme_text.empty()
+	# Once we have the dependencies, add a selector for the app mode on the sidebar.
+	st.sidebar.title("Main Menu")
+	app_mode = st.sidebar.selectbox("Select an option",
+				["Show background info", "Run the app", "Show the source code"])
+	if app_mode == "Show background info":
+		st.sidebar.success('To run this app select "Run the app" from the drop down list.')
+	elif app_mode == "Show the source code":
+		readme_text.empty()
+		st.code(get_file_content_as_string("app.py"))
+	elif app_mode == "Run the app":
+		readme_text.empty()
 		st.sidebar.info("Note: the app ignores non-Arabic text as well as diacritics.")
-			run_the_app()
+		run_the_app()
     
 # display image 
 def display_image(fn):
