@@ -111,6 +111,8 @@ def run_the_app():
 			st.write(sentence.labels[0])
 			if str(sentence.labels[0]).startswith('Positive'):
 				display_image('sent_p.png')
+			else:
+				display_image('sent_n.png')
 		else:
 			st.warning('Invalid entry. Try a few Arabic words at least.')
 	
