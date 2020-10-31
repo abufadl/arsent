@@ -40,7 +40,7 @@ def main():
     app_mode = st.sidebar.selectbox("Select an option",
         ["Show background info", "Run the app", "Show the source code"])
     if app_mode == "Show background info":
-        st.sidebar.success('To continue select "Run the app".')
+        st.sidebar.success('To run this app select "Run the app" from the drop down list.')
     elif app_mode == "Show the source code":
         readme_text.empty()
         st.code(get_file_content_as_string("app.py"))
