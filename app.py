@@ -108,13 +108,16 @@ def run_the_app():
 		if (check_entry(text_data)):
 			sentence = Sentence(clean_text(text_data.strip()))
 			classifier.predict(sentence)
-			st.write(sentence.labels[0])
+			#st.write(sentence.labels[0])
 			if str(sentence.labels[0]).startswith('Positive'):
-				st.success(sentence.labels[0])
+				
 				display_image('sent_p.png')
+				st.success(sentence.labels[0])
+				
 			else:
-				st.warning(sentence.labels[0])
 				display_image('sent_n.png')
+				st.error(sentence.labels[0])
+				
 		else:
 			st.warning('Invalid entry. Try a few Arabic words at least.')
 	
