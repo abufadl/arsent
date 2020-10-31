@@ -22,17 +22,9 @@ st.beta_set_page_config( # Alternate names: setup_page, page, layout
 
 def main():	
     st.title('Arabic Sentiment Analysis: Service Reviews') # title
-    st.subheader("By Abed Khooli - Twitter:@akhooli, LinkedIn: /in/akhooli")
+    st.subheader("By Abed Khooli - Twitter: @akhooli, LinkedIn: /in/akhooli")
     # Render the readme as markdown using st.markdown.
     readme_text = st.markdown(get_file_content_as_string("README.md"))
-    #with st.spinner('Loading something ...'):
-    #       time.sleep(2)
-      
-    #debug
-    #st.write(f'we think the path is: { path} while data path is {data_path} and path_t is {path_t}') 
-    #st.write(f'path_t contents: {path_t.ls()}')
-    #st.write(f'path contents: {path.ls()}')    
-
     
 
   # Once we have the dependencies, add a selector for the app mode on the sidebar.
