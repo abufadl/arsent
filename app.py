@@ -24,7 +24,7 @@ st.beta_set_page_config( # Alternate names: setup_page, page, layout
 def main():	
     st.title('Arabic Sentiment Analysis: Service Reviews') # title
     st.subheader("By Abed Khooli - Twitter: @akhooli, LinkedIn: /in/akhooli")
-    display_image()	
+    display_image('sent_pn.png')	
     # Render the readme as markdown using st.markdown.
     readme_text = st.markdown(get_file_content_as_string("README.md"))
     
@@ -45,9 +45,9 @@ def main():
     #run_the_app()
     
 # display image 
-def display_image():
-	image = Image.open('sent_pn.png')
-	st.image(image, caption='sentiment', width=None, use_column_width=False)
+def display_image(fn):
+	image = Image.open(fn)
+	st.image(image, caption=None, width=None, use_column_width=False)
 
 # download the pt file 
 def download_file(url , dest):
