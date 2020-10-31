@@ -11,6 +11,7 @@ import urllib
 #import asyncio
 #import aiohttp
 from pathlib import Path
+from PIL import Image
 #import torch
 
 st.beta_set_page_config( # Alternate names: setup_page, page, layout
@@ -23,6 +24,7 @@ st.beta_set_page_config( # Alternate names: setup_page, page, layout
 def main():	
     st.title('Arabic Sentiment Analysis: Service Reviews') # title
     st.subheader("By Abed Khooli - Twitter: @akhooli, LinkedIn: /in/akhooli")
+    display_image()	
     # Render the readme as markdown using st.markdown.
     readme_text = st.markdown(get_file_content_as_string("README.md"))
     
@@ -42,6 +44,11 @@ def main():
     # run the app 
     #run_the_app()
     
+# display image 
+def display_image():
+	image = Image.open('sent_pn.png')
+	st.image(image, caption='sentiment', width=None, use_column_width=True)
+
 # download the pt file 
 def download_file(url , dest):
 	if  dest.exists(): return
