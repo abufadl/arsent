@@ -42,8 +42,7 @@ def main():
         readme_text.empty()
 	st.sidebar.info("Note: the app ignores non-Arabic text as well as diacritics.")
         run_the_app()
-    # run the app 
-    #run_the_app()
+
     
 # display image 
 def display_image(fn):
