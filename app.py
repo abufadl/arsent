@@ -104,7 +104,8 @@ def run_the_app():
 	
 	text_data = st.text_area('Text to analyze: Type or paste an Arabic review. Press the Analyze button.', ''' موقع المكان جميل جداً البناء قديم جداً ، يقدم الاكل طازج ولذيذ، معامله وخدمه ممتازه، انصح جداً بزياره المكان ، انا زبون دائم، وايضاً قريب على كنيسه المهد''', max_chars=1000)
 	#text_data = st.text_input('Review (Type or paste an Arabic review. Press ENTER to apply)', 'استمتعت بالإقامة في الفندق الفخم وكان الطعام جيدا.', max_chars=250)
-	if st.button('Analyze Sentiment'):
+	button2press = st.button('Analyze Sentiment')
+	if button2press:
 		if (check_entry(text_data)):
 			sentence = Sentence(clean_text(text_data.strip()))
 			classifier.predict(sentence)
@@ -122,6 +123,7 @@ def run_the_app():
 			st.warning('Invalid entry. Try a few Arabic words at least.')
 	else:
 		st.write("Thank you for trying out thid app!")
+		button2press = False
 	
 # Download a single file and make its content available as a string. https://raw.githubusercontent.com/abufadl/asa/master/
 @st.cache(show_spinner=False)
