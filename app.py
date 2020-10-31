@@ -103,7 +103,7 @@ def run_the_app():
 	download_file(export_file_url, path/export_file_name)
 	classifier = TextClassifier.load('arsent_bmc3.pt')
 	
-	text_data = st.text_area('Text to analyze: Type or paste an Arabic review. Press CTRL+ENTER to apply', ''' موقع المكان جميل جداً البناء قديم جداً ، يقدم الاكل طازج ولذيذ، معامله وخدمه ممتازه، انصح جداً بزياره المكان ، انا زبون دائم، وايضاً قريب على كنيسه المهد''', max_chars=1000)
+	text_data = st.text_area('Text to analyze: Type or paste an Arabic review. Press the Analyze button.', ''' موقع المكان جميل جداً البناء قديم جداً ، يقدم الاكل طازج ولذيذ، معامله وخدمه ممتازه، انصح جداً بزياره المكان ، انا زبون دائم، وايضاً قريب على كنيسه المهد''', max_chars=1000)
 	#text_data = st.text_input('Review (Type or paste an Arabic review. Press ENTER to apply)', 'استمتعت بالإقامة في الفندق الفخم وكان الطعام جيدا.', max_chars=250)
 	if st.button('Analyze Sentiment'):
 		if (check_entry(text_data)):
