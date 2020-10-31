@@ -50,7 +50,7 @@ def main():
     # run the app 
     #run_the_app()
     
-# download the pickle file 
+# download the pt file 
 def download_file(url , dest):
 	if  dest.exists(): return
 	file_warning, progress_bar = None, None
@@ -70,7 +70,7 @@ def download_file(url , dest):
 					output_file.write(data)
 
 					# We perform animation by overwriting the elements.
-					file_warning.warning(f"Downloading ... {counter/MEGABYTES}/{length/MEGABYTES} MB")
+					file_warning.warning(f"Downloading model ... {counter/MEGABYTES}/{length/MEGABYTES} MB")
 					progress_bar.progress(min(counter / length, 1.0))
 
 	# Finally, we remove these visual elements by calling .empty().
