@@ -21,8 +21,8 @@ st.beta_set_page_config( # Alternate names: setup_page, page, layout
 	)
 
 def main():	
-    st.title('Arabic Sentiment Analysis') # title
-    st.subheader("Abed Khooli - @akhooli")
+    st.title('Arabic Sentiment Analysis: Service Reviews') # title
+    st.subheader("By Abed Khooli - Twitter:@akhooli, LinkedIn: /in/akhooli")
     # Render the readme as markdown using st.markdown.
     readme_text = st.markdown(get_file_content_as_string("README.md"))
     #with st.spinner('Loading something ...'):
@@ -104,13 +104,14 @@ def run_the_app():
 	classifier = TextClassifier.load('arsent_bmc3.pt')
 	
 	text_data = st.text_input('Review (Type or paste an Arabic review. Press ENTER to apply)', 'استمتعت بالإقامة في الفندق الفخم وكان الطعام جيدا.', max_chars=250)
-	if (check_entry(text_data)):
-		sentence = Sentence(clean_text(text_data.strip()))
-		classifier.predict(sentence)
-		#st.text("app ran successfully.")
-		st.write(sentence.labels[0])
-	else:
-		st.warning('Invalid entry. Try a few Arabic words at least.')
+	if st.button('Analyze Sentiment'):
+		if (check_entry(text_data)):
+			sentence = Sentence(clean_text(text_data.strip()))
+			classifier.predict(sentence)
+			#st.text("app ran successfully.")
+			st.write(sentence.labels[0])
+		else:
+			st.warning('Invalid entry. Try a few Arabic words at least.')
 	
 # Download a single file and make its content available as a string. https://raw.githubusercontent.com/abufadl/asa/master/
 @st.cache(show_spinner=False)
