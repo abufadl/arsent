@@ -40,7 +40,7 @@ def main():
         st.code(get_file_content_as_string("app.py"))
     elif app_mode == "Run the app":
         readme_text.empty()
-	st.sidebar.info("Note: the app ignores non-Arabic text as well as diacritics.")
+	#st.sidebar.info("Note: the app ignores non-Arabic text as well as diacritics.")
         run_the_app()
 
     
