@@ -32,7 +32,7 @@ def main():
 		st.code(get_file_content_as_string("app.py"))
 	elif app_mode == "Run the app":
 		readme_text.empty()
-		st.sidebar.info("Note: the app ignores non-Arabic text as well as diacritics. You may try one of the random (real) reviews displayed below or enter your own.")
+		st.sidebar.info("Note: the app ignores non-Arabic text as well as diacritics. You may try (copy/paste) one of the random (real) reviews displayed below or enter your own.")
 		st.sidebar.write(f"Random text (one of ten of real reviews):\n {RNADOM_REVIEW}")
 		run_the_app()
     
