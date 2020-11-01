@@ -1,18 +1,10 @@
 from flair.data import Sentence
 from flair.models import TextClassifier
 import streamlit as st
-#import pandas as pd
-#import numpy as np
-#import time
-#import os
-#import shutil
 import re
 import urllib
-#import asyncio
-#import aiohttp
 from pathlib import Path
 from PIL import Image
-#import torch
 
 st.beta_set_page_config( # Alternate names: setup_page, page, layout
 	layout="centered",  # Can be "centered" or "wide". In the future also "dashboard", etc.
