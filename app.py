@@ -70,7 +70,7 @@ def download_file(url , dest):
 		if progress_bar is not None:
 			progress_bar.empty()
             
-
+RNADOM_REVIEW = random.choice(RNADOM_REVIEWS)
 def run_the_app():
 
 	#export_file_url = 'https://www.googleapis.com/drive/v3/files/1fsOISLHSk7qp_fZ8_bGwl0uRi2mZujbR?alt=media&key=AIzaSyArnAhtI95SoFCexh97Xyi0JHI03ghd-_0'
@@ -96,8 +96,8 @@ def run_the_app():
 	#classifier = TextClassifier.load('arsent_bmc3.pt')
 	classifier = TextClassifier.load(export_file_name)
 	
-	random_review = random.choice(RNADOM_REVIEWS)
-	text_data = st.text_area('Text to analyze: Type or paste an Arabic review. Press the Analyze button.', random_review, max_chars=1000)
+	#random_review = random.choice(RNADOM_REVIEWS)
+	text_data = st.text_area('Text to analyze: Type or paste an Arabic review. Press the Analyze button.', RNADOM_REVIEW, max_chars=1000)
 	#text_data = st.text_input('Review (Type or paste an Arabic review. Press ENTER to apply)', 'استمتعت بالإقامة في الفندق الفخم وكان الطعام جيدا.', max_chars=250)
 	button2press = st.button('Analyze Sentiment')
 	if button2press:
