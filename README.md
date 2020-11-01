@@ -3,7 +3,10 @@
 يعمل هذا التطبيق على تحليل المشاعر للنصوص العربية وخاصة مراجعات وتقييمات الخدمات كالفنادق والمطاعم والكتب وشركات الطيران، ويعتمد على نموذج لغوي مبني على التعلم العميق.
 
 Arabic Sentiment Analysis - App powered by [Streamlit](https://docs.streamlit.io/)  
-The model behind this app was trained on positive and negative reviews (hotels, restaurants, ...) using the [Flair NLP](https://github.com/flairNLP/flair/) library and by fine-tuning [bert-base-multilingual-cased](https://huggingface.co/bert-base-multilingual-cased) from Huggingface. It was not fully trained (around 0.89 accuracy).    
+The model behind this app was trained on 200k positive and negative reviews (hotels, restaurants, products, moviews, books and a few airlines) using the [Flair NLP](https://github.com/flairNLP/flair/) library and by fine-tuning [bert-base-multilingual-cased](https://huggingface.co/bert-base-multilingual-cased) from Huggingface. It was not fully trained (around 0.90 accuracy).    
 The first time you run the app, it will download around 700 MB (not to your device, but to the app server). This may take a few seconds (up to 5).  
-This app is hosted on Streamlit servers using a free plan with minimum resources. It is not production ready.
+This app is hosted on Streamlit servers using a free plan with minimum resources. It is not production ready.  
+For more about the origins of the dataset, please see the [Arabic 100k Reviews](https://www.kaggle.com/abedkhooli/arabic-100k-reviews) on Kaggle.   
+If you have questions or comments, please ask via Twitter or in the [LinkedIn post about this app](https://www.linkedin.com/posts/akhooli_flairnlp-streamlit-sentimentanalysis-activity-6728033724958572544-r-ap).
+
 
