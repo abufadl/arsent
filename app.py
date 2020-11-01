@@ -33,7 +33,7 @@ def main():
 	elif app_mode == "Run the app":
 		readme_text.empty()
 		st.sidebar.info("Note: the app ignores non-Arabic text as well as diacritics.")
-		st.sidebar.write(f"Random text (one of ten): {RNADOM_REVIEW}")
+		st.sidebar.write(f"Random text (one of ten of real reviews):\n {RNADOM_REVIEW}")
 		run_the_app()
     
 # display image 
