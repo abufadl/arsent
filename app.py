@@ -7,7 +7,7 @@ from pathlib import Path
 from PIL import Image
 import random
 
-st.beta_set_page_config( # Alternate names: setup_page, page, layout
+st.set_page_config( # Alternate names: setup_page, page, layout
 	layout="centered",  # Can be "centered" or "wide". In the future also "dashboard", etc.
 	initial_sidebar_state="expanded",  # Can be "auto", "expanded", "collapsed"
 	page_title="Arabic Sentiment Analysis",  # String or None. Strings get appended with "• Streamlit". 
