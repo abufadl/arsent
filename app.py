@@ -89,10 +89,14 @@ RNADOM_REVIEWS = [
 RNADOM_REVIEW = random.choice(RNADOM_REVIEWS)
 def run_the_app():
 
-	#export_file_url = 'https://www.googleapis.com/drive/v3/files/1fsOISLHSk7qp_fZ8_bGwl0uRi2mZujbR?alt=media&key=AIzaSyArnAhtI95SoFCexh97Xyi0JHI03ghd-_0'
-	export_file_url = 'https://www.googleapis.com/drive/v3/files/1bBaOkwb1magmG-Ref2IK30BwwBP6Y5pY?alt=media&key=AIzaSyArnAhtI95SoFCexh97Xyi0JHI03ghd-_0' 
+	#export_file_url = 'https://www.googleapis.com/drive/v3/files/1fsOISLHSk7qp_fZ8_bGwl0uRi2mZujbR?alt=media&key='
+	# https://drive.google.com/file/d/1SciUwndsvR9mXraMFoWIL9PWfi5WF8E1/view?usp=sharing    aub bert m v2 95.6%
+	# https://drive.google.com/file/d/1bBaOkwb1magmG-Ref2IK30BwwBP6Y5pY/view?usp=sharing
+	#export_file_url = 'https://www.googleapis.com/drive/v3/files/1bBaOkwb1magmG-Ref2IK30BwwBP6Y5pY?alt=media&key=' 
+	export_file_url = 'https://www.googleapis.com/drive/v3/files/1SciUwndsvR9mXraMFoWIL9PWfi5WF8E1?alt=media&key=AIzaSyArnAhtI95SoFCexh97Xyi0JHI03ghd-_0'
 	#export_file_name = 'arsent_bmc3.pt'
-	export_file_name = 'arsent200k.pt'
+	#export_file_name = 'arsent200k.pt'
+	export_file_name = 'arsent_aub.pt'
 
 	accents = re.compile(r'[\u064b-\u0652\u0640]') # harakaat and tatweel (kashida) to remove  
 	arabic_punc = re.compile(r'[\u0621-\u063A\u0641-\u064A\u061b\u061f\u060c\u003A\u003D\u002E\u002F\u007C]+') # to keep 
@@ -139,7 +143,7 @@ def run_the_app():
 # Download a single file and make its content available as a string. https://raw.githubusercontent.com/abufadl/asa/master/
 @st.cache(show_spinner=False)
 def get_file_content_as_string(path2):
-    url = 'https://raw.githubusercontent.com/abufadl/asa/master/' + path2
+    url = 'https://raw.githubusercontent.com/abufadl/arsent/master/' + path2
     response = urllib.request.urlopen(url)
     return response.read().decode("utf-8")
 
