@@ -89,10 +89,7 @@ RNADOM_REVIEWS = [
 RNADOM_REVIEW = random.choice(RNADOM_REVIEWS)
 def run_the_app():
 
-	#export_file_url = 'https://www.googleapis.com/drive/v3/files/1fsOISLHSk7qp_fZ8_bGwl0uRi2mZujbR?alt=media&key='
-	# https://drive.google.com/file/d/1SciUwndsvR9mXraMFoWIL9PWfi5WF8E1/view?usp=sharing    aub bert m v2 95.6%
-	# https://drive.google.com/file/d/1bBaOkwb1magmG-Ref2IK30BwwBP6Y5pY/view?usp=sharing
-	#export_file_url = 'https://www.googleapis.com/drive/v3/files/1bBaOkwb1magmG-Ref2IK30BwwBP6Y5pY?alt=media&key=' 
+
 	export_file_url = 'https://www.googleapis.com/drive/v3/files/1SciUwndsvR9mXraMFoWIL9PWfi5WF8E1?alt=media&key=AIzaSyArnAhtI95SoFCexh97Xyi0JHI03ghd-_0'
 	#export_file_name = 'arsent_bmc3.pt'
 	#export_file_name = 'arsent200k.pt'
