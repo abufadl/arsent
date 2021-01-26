@@ -8,6 +8,6 @@ The model behind this app was trained on around 600k positive and negative revie
 The first time you run the app, it will download around 520 MB (not to your device, but to the app server). This may take a few seconds (up to 5).  
 This app is hosted on __Streamlit__ servers using a free/shared plan with minimum resources. It is not production ready.  
 For more about the origins of the dataset, please see the [Arabic 100k Reviews](https://www.kaggle.com/abedkhooli/arabic-100k-reviews) on Kaggle (description section).   
-If you have questions or comments, please ask via [Twitter](https://twitter.com/akhooli) or in the [LinkedIn post about this app](https://www.linkedin.com/posts/akhooli_flairnlp-streamlit-sentimentanalysis-activity-6728033724958572544-r-ap).
+If you have questions or comments, please ask via [Twitter](https://twitter.com/akhooli/status/1354094522028986369) or in the [LinkedIn post about this app](https://www.linkedin.com/posts/akhooli_sentiment-analysis-deeplearning-activity-6759861871911702530-Oa9P).
 
 
