@@ -1,5 +1,6 @@
 #flair
 #flair==0.6.1
+pip
 flair==0.7
 transformers==3.5.1
 
