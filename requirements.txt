@@ -1,4 +1,4 @@
 #flair
-#flair==0.6.1
-flair==0.7
+flair==0.6.1
+#flair==0.7
 
