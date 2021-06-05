@@ -1,7 +1,7 @@
 #flair
 #flair==0.6.1
 pip
-python==3.6.7
+python==3.6.5
 flair==0.7
 transformers==3.5.0
 
