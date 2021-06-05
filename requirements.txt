@@ -1,6 +1,6 @@
 #flair
 #flair==0.6.1
-pip
+#pip
 #python==3.6.0
 flair==0.7
 #transformers==3.5.0
